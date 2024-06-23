@@ -5,7 +5,9 @@ const profilePictureStorage = multer.diskStorage({
     cb(null, "uploads/profile");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname + "-" + Date.now());
+    console.log("Original File Name:", file.originalname);
+    const filename = file.originalname + "-" + Date.now();
+    console.log("Generated File Name:", filename);
   },
 });
 
@@ -18,7 +20,9 @@ const recipeImageStorage = multer.diskStorage({
     cb(null, "uploads/recipes");
   },
   filename: function (req, file, cb) {
-    cb(null, file.originalname + "-" + Date.now());
+    console.log("Original File Name:", file.originalname);
+    const filename = file.originalname + "-" + Date.now();
+    console.log("Generated File Name:", filename);
   },
 });
 
