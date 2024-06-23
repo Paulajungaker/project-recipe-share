@@ -1,6 +1,6 @@
 import express from "express";
 import { authMiddleware } from "../middleware/authMiddleware.js";
-import { recipeImageUpload } from "../middleware/fileUpload.js";
+import { handleFileUpload } from "../middleware/fileUpload.js";
 
 import {
   createRecipe,
@@ -12,10 +12,13 @@ import {
 
 const router = express.Router();
 
-router.post("/", authMiddleware, recipeImageUpload, createRecipe);
+router.post("/", authMiddleware, handleFileUpload, createRecipe);
+
 router.get("/", getRecipes);
 router.get("/:id", getRecipeById);
-router.put("/:id", authMiddleware, recipeImageUpload, updateRecipe);
+
+router.put("/:id", authMiddleware, handleFileUpload, updateRecipe);
+
 router.delete("/:id", authMiddleware, deleteRecipe);
 
 export default router;

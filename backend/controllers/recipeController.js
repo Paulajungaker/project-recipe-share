@@ -1,3 +1,4 @@
+import { response } from "express";
 import Recipe from "../models/Recipe.js";
 
 export const createRecipe = async (req, res) => {
@@ -5,17 +6,35 @@ export const createRecipe = async (req, res) => {
   const image = req.file ? req.file.path : undefined;
 
   try {
+    const parsedIngredients = Array.isArray(ingredients)
+      ? ingredients
+      : JSON.parse(ingredients);
+
     const newRecipe = new Recipe({
       title,
       description,
-      ingredients,
+      ingredients: parsedIngredients,
       instructions,
       image,
       user: req.user.id,
     });
 
     const recipe = await newRecipe.save();
-    res.json(recipe);
+
+    const responseRecipe = {
+      _id: recipe._id,
+      title: recipe.title,
+      description: recipe.description,
+      ingredients: recipe.ingredients,
+      instructions: recipe.instructions,
+      image: recipe.image,
+      user: recipe.user,
+      date: recipe.date,
+    };
+
+    console.log("Response Recipe:", responseRecipe);
+
+    res.json(responseRecipe);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
@@ -71,7 +90,18 @@ export const updateRecipe = async (req, res) => {
       { new: true }
     );
 
-    res.json(recipe);
+    const responseRecipe = {
+      _id: recipe._id,
+      title: recipe.title,
+      description: recipe.description,
+      ingredients: recipe.ingredients,
+      instructions: recipe.instructions,
+      image: recipe.image,
+      user: recipe.user,
+      date: recipe.date,
+    };
+
+    res.json(responseRecipe);
   } catch (err) {
     console.error(err.message);
     if (err.kind === "ObjectId") {

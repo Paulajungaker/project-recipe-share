@@ -103,11 +103,22 @@ export const updateProfile = async (req, res) => {
     }
 
     user.bio = bio || user.bio;
-    user.profilePicture = profilePicture || user.profilePicture;
+    if (profilePicture) {
+      user.profilePicture = profilePicture;
+    }
 
     await user.save();
 
-    res.json(user);
+    const responseUser = {
+      _id: user._id,
+      username: user.username,
+      email: user.email,
+      bio: user.bio,
+      profilePicture: user.profilePicture,
+      date: user.date,
+    };
+
+    res.json(responseUser);
   } catch (err) {
     console.error(err.message);
     res.status(500).json("Server error");

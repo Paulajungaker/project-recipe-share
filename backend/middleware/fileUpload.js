@@ -5,9 +5,7 @@ const profilePictureStorage = multer.diskStorage({
     cb(null, "uploads/profile");
   },
   filename: function (req, file, cb) {
-    console.log("Original File Name:", file.originalname);
-    const filename = file.originalname + "-" + Date.now();
-    console.log("Generated File Name:", filename);
+    cb(null, file.originalname + "-" + Date.now());
   },
 });
 
@@ -20,9 +18,7 @@ const recipeImageStorage = multer.diskStorage({
     cb(null, "uploads/recipes");
   },
   filename: function (req, file, cb) {
-    console.log("Original File Name:", file.originalname);
-    const filename = file.originalname + "-" + Date.now();
-    console.log("Generated File Name:", filename);
+    cb(null, file.originalname + "-" + Date.now());
   },
 });
 
@@ -30,4 +26,15 @@ const recipeImageUpload = multer({ storage: recipeImageStorage }).single(
   "image"
 );
 
-export { profilePictureUpload, recipeImageUpload };
+const handleFileUpload = (req, res, next) => {
+  recipeImageUpload(req, res, (err) => {
+    if (err) {
+      console.error("Multer error:", err);
+      return res.status(500).json({ error: "File upload failed" });
+    }
+    console.log("Uploaded file:", req.file);
+    next();
+  });
+};
+
+export { profilePictureUpload, recipeImageUpload, handleFileUpload };
