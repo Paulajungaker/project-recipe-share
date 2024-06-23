@@ -19,4 +19,4 @@ const authMiddleware = (req, res, next) => {
   }
 };
 
-export { authMiddleware, upload };
+export { authMiddleware };
