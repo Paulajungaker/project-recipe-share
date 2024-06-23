@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import { db } from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import recipeRoutes from "./routes/recipeRoutes.js";
+import reviewRoutes from "./routes/reviewRoutes.js";
 
 // Load enviroment variables
 dotenv.config();
@@ -23,6 +24,7 @@ app.use(express.json());
 // Define Routes
 app.use("/api/auth", authRoutes);
 app.use("/api/recipes", recipeRoutes);
+app.use("/api/reviews", reviewRoutes);
 
 const PORT = process.env.PORT || 5001;
 app.listen(PORT, () => {
