@@ -27,6 +27,9 @@ const recipeImageUpload = multer({ storage: recipeImageStorage }).single(
 );
 
 const handleFileUpload = (req, res, next) => {
+  console.log("Request body:", req.body);
+  console.log("Request file:", req.file);
+
   recipeImageUpload(req, res, (err) => {
     if (err) {
       console.error("Multer error:", err);
