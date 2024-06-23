@@ -2,7 +2,7 @@ import { response } from "express";
 import Recipe from "../models/Recipe.js";
 
 export const createRecipe = async (req, res) => {
-  const { title, description, ingredients, instructions } = req.body;
+  const { title, description, ingredients, instructions, tags } = req.body;
   const image = req.file ? req.file.path : undefined;
 
   try {
@@ -16,6 +16,7 @@ export const createRecipe = async (req, res) => {
       ingredients: parsedIngredients,
       instructions,
       image,
+      tags,
       user: req.user.id,
     });
 
@@ -28,6 +29,7 @@ export const createRecipe = async (req, res) => {
       ingredients: recipe.ingredients,
       instructions: recipe.instructions,
       image: recipe.image,
+      tags: recipe.tags,
       user: recipe.user,
       date: recipe.date,
     };
@@ -70,7 +72,7 @@ export const getRecipeById = async (req, res) => {
 };
 
 export const updateRecipe = async (req, res) => {
-  const { title, ingredients, instructions } = req.body;
+  const { title, ingredients, instructions, tags } = req.body;
   const image = req.file ? req.file.path : undefined;
 
   try {
@@ -86,7 +88,7 @@ export const updateRecipe = async (req, res) => {
 
     recipe = await Recipe.findByIdAndUpdate(
       req.params.id,
-      { $set: { title, ingredients, instructions, image } },
+      { $set: { title, ingredients, instructions, image, tags } },
       { new: true }
     );
 
@@ -97,6 +99,7 @@ export const updateRecipe = async (req, res) => {
       ingredients: recipe.ingredients,
       instructions: recipe.instructions,
       image: recipe.image,
+      tags: recipe.tags,
       user: recipe.user,
       date: recipe.date,
     };
