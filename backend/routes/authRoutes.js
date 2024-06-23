@@ -1,7 +1,8 @@
 import express from "express";
 import { check } from "express-validator";
 import * as authController from "../controllers/authController.js";
-import { authMiddleware, upload } from "../middleware/authMiddleware.js";
+import { authMiddleware } from "../middleware/authMiddleware.js";
+import { profilePictureUpload } from "../middleware/fileUpload.js";
 
 const router = express.Router();
 
@@ -27,7 +28,12 @@ router.post(
   authController.loginUser
 );
 
-router.put("/profile", authMiddleware, upload, authController.updateProfile);
+router.put(
+  "/profile",
+  authMiddleware,
+  profilePictureUpload,
+  authController.updateProfile
+);
 
 router.get("/", authMiddleware, authController.getUser);
 

@@ -1,6 +1,5 @@
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-// import { validationResult } from "express-validator";
 import User from "../models/User.js";
 
 export const registerUser = async (req, res) => {

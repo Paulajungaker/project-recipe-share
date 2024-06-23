@@ -1,17 +1,4 @@
 import jwt from "jsonwebtoken";
-import multer from "multer";
-
-// Setup multer for file uploads
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, "uploads");
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname + "-" + Date.now());
-  },
-});
-
-const upload = multer({ storage: storage }).single("profilePicture");
 
 const authMiddleware = (req, res, next) => {
   // Get token from header
