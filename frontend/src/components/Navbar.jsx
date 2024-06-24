@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./styling/Navbar.css";
 
 const Navbar = () => {
@@ -22,14 +22,38 @@ const Navbar = () => {
           <hr className="logoLine"></hr>
           <hr className="logoLine"></hr>
           <ul className="leftNavList">
-            <li className="navListItem">Login</li>
-            <li className="navListItem">Register</li>
-            <li className="navListItem">Home</li>
+            <li className="navListItem">
+              <Link to="/login" className="navLink">
+                Login
+              </Link>
+            </li>
+            <li className="navListItem">
+              <Link to="/register" className="navLink">
+                Register
+              </Link>
+            </li>
+            <li className="navListItem">
+              <Link to="/" className="navLink">
+                Home
+              </Link>
+            </li>
           </ul>
           <ul className="rightNavList">
-            <li className="navListItem">Recipes</li>
-            <li className="navListItem">Submit Recipe</li>
-            <li className="navListItem">Profile</li>
+            <li className="navListItem">
+              <Link to="/recipes" className="navLink">
+                Recipes
+              </Link>
+            </li>
+            <li className="navListItem">
+              <Link to="/submit-recipe" className="navLink">
+                Submit Recipe
+              </Link>
+            </li>
+            <li className="navListItem">
+              <Link to="/profile" className="navLink">
+                Profile
+              </Link>
+            </li>
           </ul>
         </div>
       </div>
