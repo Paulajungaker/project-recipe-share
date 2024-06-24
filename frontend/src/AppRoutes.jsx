@@ -6,6 +6,7 @@ import Register from "./pages/auth/Register";
 import Recipes from "./pages/Recipes";
 import SubmitRecipe from "./pages/SubmitRecipe";
 import Profile from "./pages/Profile";
+import Footer from "./components/Footer";
 
 const AppRoutes = () => {
   return (
@@ -19,6 +20,7 @@ const AppRoutes = () => {
         <Route path="/submit-recipe" element={<SubmitRecipe />} />
         <Route path="/profile" element={<Profile />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };

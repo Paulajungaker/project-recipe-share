@@ -1,0 +1,50 @@
+.footer {
+  width: 100%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.footerWrapper {
+  padding: 0 41px 41px 41px;
+  font-family: var(--header-font);
+}
+
+.footerLogo {
+  width: 212px;
+  height: 94px;
+  object-fit: cover;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+.contact {
+  margin-bottom: 75px;
+  padding-top: 10px;
+}
+
+.privacyPolicy {
+  margin: 0 0 10px 0;
+}
+
+.about {
+  margin: 0;
+}
+
+@media (min-width: 745px) {
+  .footerLogo {
+    width: 368px;
+    height: 105px;
+  }
+
+  .contact {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .footerLogo {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
