@@ -1,0 +1,133 @@
+.navbar {
+  background-color: #f5f5f5;
+  position: relative;
+}
+
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.chefIconS {
+  position: absolute;
+  top: 5px;
+  left: 0;
+}
+
+.chefIconL {
+  display: none;
+}
+
+.logoIcon {
+  height: 105px;
+  width: 372px;
+  object-fit: cover;
+}
+
+.navLinksWrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding: 10px 0;
+}
+
+.logoLine {
+  width: 80%;
+  margin-top: 20px;
+}
+
+.leftNavList {
+  margin-top: 5px;
+  padding: 0 30px;
+}
+
+.rightNavList {
+  margin-top: 5px;
+  padding: 0 30px;
+}
+
+.navListItem {
+  list-style-type: none;
+  font-family: var(--header-font);
+}
+
+@media (min-width: 745px) {
+  .chefIconS {
+    display: none;
+  }
+
+  .chefIconL {
+    display: block;
+    height: 64px;
+    position: absolute;
+    top: 130px;
+    left: 60px;
+  }
+
+  .navLinksWrapper {
+    display: flex;
+    justify-content: center;
+    padding: 40px 0;
+    margin-left: 70px;
+  }
+
+  .logoLine {
+    display: none;
+  }
+
+  .leftNavList {
+    display: flex;
+    padding: 0;
+  }
+
+  .rightNavList {
+    display: flex;
+    padding: 0;
+  }
+
+  .navListItem {
+    margin-right: 10px;
+    font-size: 18px;
+    border-right: 1px solid black;
+    padding-right: 10px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .navbarContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .navLinksWrapper {
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 50px;
+    z-index: 1;
+  }
+
+  .logoWrapper {
+    position: absolute;
+    left: 30%;
+  }
+
+  .chefIconL {
+    top: 25px;
+    left: 40px;
+  }
+
+  .leftNavList {
+    justify-content: flex-start;
+    padding: 0 50px;
+  }
+
+  .rightNavList {
+    justify-content: flex-end;
+  }
+}
+
+@media (min-width: 1100px) {
+  .logoWrapper {
+    left: 35%;
+  }
+}
