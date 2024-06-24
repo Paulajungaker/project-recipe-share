@@ -4,6 +4,13 @@
   font-weight: 400;
 
   --header-font: "Montserrat";
+
+  --red-color: #ff6f61;
+  --red-hover: #e65c50;
+  --yellow-color: #ffd700;
+  --light-color: #f5f5f5;
+  --dark-color: #333333;
+  --blue-color: #008cba;
 }
 
 body {
@@ -14,6 +21,7 @@ body {
 h1 {
   font-size: 36px;
   font-family: var(--header-font);
+  font-weight: 700;
 }
 
 h2 {
@@ -38,19 +46,23 @@ p {
 }
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+  background-color: var(--red-color);
+  padding: 16px 27px;
+  border-radius: 10px;
+  border: none;
 }
+
+button a {
+  color: var(--light-color);
+  text-decoration: none;
+  font-size: 18px;
+  font-family: var(--header-font);
+}
+
 button:hover {
-  border-color: #646cff;
+  background-color: var(--red-hover);
 }
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
@@ -71,6 +83,14 @@ button:focus-visible {
 
   p {
     font-size: 18px;
+  }
+
+  button {
+    padding: 20px 27px;
+  }
+
+  button a {
+    font-size: 20px;
   }
 }
 
