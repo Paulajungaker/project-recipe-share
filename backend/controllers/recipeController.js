@@ -157,12 +157,11 @@ export const likeRecipe = async (req, res) => {
       return res.status(404).json({ msg: "Recipe already liked" });
     }
 
-    recipe.likes++;
     recipe.likedBy.push(userId);
 
     recipe = await recipe.save();
 
-    res.json(recipe);
+    res.json({ liked: true });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");
@@ -185,12 +184,11 @@ export const unlikeRecipe = async (req, res) => {
       return res.status(400).json({ msg: "Recipe not liked" });
     }
 
-    recipe.likes--;
-    recipe.likedBy = recipe.likedBy.filter((id) => id !== userId);
+    recipe.likedBy = recipe.likedBy.filter((id) => id.toString() !== userId);
 
     recipe = await recipe.save();
 
-    res.json(recipe);
+    res.json({ liked: false });
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server error");

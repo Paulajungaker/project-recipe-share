@@ -34,16 +34,16 @@ const RecipeSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  likes: {
-    type: Number,
-    default: 0,
-  },
   likedBy: [
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
   ],
+});
+
+RecipeSchema.virtual("likes").get(function () {
+  return this.likedBy.length;
 });
 
 const Recipe = mongoose.model("Recipe", RecipeSchema);

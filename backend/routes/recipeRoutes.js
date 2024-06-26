@@ -23,8 +23,8 @@ router.put("/:id", authMiddleware, handleFileUpload, updateRecipe);
 
 router.delete("/:id", authMiddleware, deleteRecipe);
 
-router.put("/recipes/like/:recipeId", authMiddleware, likeRecipe);
+router.put("/like/:recipeId", authMiddleware, likeRecipe);
 
-router.put("/recipes/unlike/:recipeId", authMiddleware, unlikeRecipe);
+router.put("/unlike/:recipeId", authMiddleware, unlikeRecipe);
 
 export default router;
