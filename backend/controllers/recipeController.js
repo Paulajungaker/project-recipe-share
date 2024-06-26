@@ -1,4 +1,3 @@
-import { response } from "express";
 import Recipe from "../models/Recipe.js";
 
 export const createRecipe = async (req, res) => {
@@ -43,6 +42,7 @@ export const createRecipe = async (req, res) => {
   }
 };
 
+// Get all recipes
 export const getRecipes = async (req, res) => {
   try {
     const recipes = await Recipe.find().populate("user", ["username"]);
@@ -53,6 +53,7 @@ export const getRecipes = async (req, res) => {
   }
 };
 
+// Get recipe by Id
 export const getRecipeById = async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.id).populate("user", [
@@ -71,6 +72,7 @@ export const getRecipeById = async (req, res) => {
   }
 };
 
+// Update a recipe
 export const updateRecipe = async (req, res) => {
   const { title, ingredients, instructions, tags } = req.body;
   const image = req.file ? req.file.path : undefined;
@@ -114,6 +116,7 @@ export const updateRecipe = async (req, res) => {
   }
 };
 
+// Delete a recipe
 export const deleteRecipe = async (req, res) => {
   try {
     const recipe = await Recipe.findById(req.params.id);
@@ -134,6 +137,62 @@ export const deleteRecipe = async (req, res) => {
     if (err.kind === "ObjectId") {
       return res.status(404).json({ msg: "Recipe not found" });
     }
+    res.status(500).send("Server error");
+  }
+};
+
+// Like a recipe
+export const likeRecipe = async (req, res) => {
+  const { recipeId } = req.params;
+  const userId = req.user.id;
+
+  try {
+    let recipe = await Recipe.findById(recipeId);
+
+    if (!recipe) {
+      return res.status(404).json({ msg: "Recipe not found" });
+    }
+
+    if (recipe.likedBy.includes(userId)) {
+      return res.status(404).json({ msg: "Recipe already liked" });
+    }
+
+    recipe.likes++;
+    recipe.likedBy.push(userId);
+
+    recipe = await recipe.save();
+
+    res.json(recipe);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send("Server error");
+  }
+};
+
+// Unlike a recipe
+export const unlikeRecipe = async (req, res) => {
+  const { recipeId } = req.params;
+  const userId = req.user.id;
+
+  try {
+    let recipe = await Recipe.findById(recipeId);
+
+    if (!recipe) {
+      return res.status(404).json({ msg: "Recipe not found" });
+    }
+
+    if (!recipe.likedBy.includes(userId)) {
+      return res.status(400).json({ msg: "Recipe not liked" });
+    }
+
+    recipe.likes--;
+    recipe.likedBy = recipe.likedBy.filter((id) => id !== userId);
+
+    recipe = await recipe.save();
+
+    res.json(recipe);
+  } catch (err) {
+    console.error(err.message);
     res.status(500).send("Server error");
   }
 };
