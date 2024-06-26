@@ -8,7 +8,7 @@ const sampleLatestRecipes = [
       "Classic Italian pasta dish with eggs, cheese, pancetta, and black pepper.",
     username: "ItalianChef",
     rating: 4.9,
-    tags: ["Pasta", "Italian", "Dairy"],
+    tags: ["Meat", "Dairy"],
   },
   {
     image: "/images/Sushi.svg",
@@ -17,7 +17,7 @@ const sampleLatestRecipes = [
       "Homemade sushi rolls with fresh fish, avocado, cucumber, and sushi rice.",
     username: "SushiMaster",
     rating: 4.7,
-    tags: ["Japanese", "Seafood"],
+    tags: ["Fish"],
   },
   {
     image: "/images/ChocolateCake.svg",
@@ -26,7 +26,7 @@ const sampleLatestRecipes = [
       "Decadent chocolate cake with layers of rich chocolate ganache.",
     username: "ChocoLover",
     rating: 4.8,
-    tags: ["Dessert", "Chocolate"],
+    tags: ["Dessert", "Dairy", "Gluten"],
   },
   {
     image: "/images/StirFry.svg",

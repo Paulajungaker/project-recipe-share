@@ -50,6 +50,9 @@ button {
   padding: 16px 27px;
   border-radius: 10px;
   border: none;
+  color: var(--light-color);
+  font-size: 18px;
+  font-family: var(--header-font);
 }
 
 button a {
@@ -66,6 +69,11 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
+}
+
+.sectionLineSmall {
+  width: 100%;
+  margin: 32px 0;
 }
 
 @media (min-width: 745px) {
@@ -87,6 +95,7 @@ button:focus-visible {
 
   button {
     padding: 20px 27px;
+    font-size: 20px;
   }
 
   button a {
