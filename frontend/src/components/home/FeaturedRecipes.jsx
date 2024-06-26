@@ -1,5 +1,5 @@
 import RecipeCard from "../RecipeCard";
-import "./styling/FeaturedRecipes.css";
+import "./styling/HomeRecipes.css";
 
 const sampleRecipes = [
   {
@@ -40,12 +40,11 @@ const sampleRecipes = [
 
 const FeaturedRecipes = () => {
   return (
-    <div className="featuredRecipesContainer">
-      <h2 className="featuredTitle">Featured Recipes</h2>
-      <div className="recipeList">
+    <div className="homeRecipesContainer">
+      <h2 className="homeRecipeTitle">Featured Recipes</h2>
+      <div className="homeRecipeList">
         {sampleRecipes.map((recipe, index) => (
           <RecipeCard
-            className="featuredRecipe"
             key={index}
             image={recipe.image}
             title={recipe.title}
