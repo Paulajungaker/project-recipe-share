@@ -1,11 +1,7 @@
 .recipeCard {
   width: 294px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-  margin-left: 10px;
   height: 590px;
-}
-
-.recipeImage {
 }
 
 .recipeContent {
@@ -14,9 +10,6 @@
 
 .recipeTitle {
   margin: 16px 0;
-}
-
-.recipeLine {
 }
 
 .recipeDescription {
@@ -31,6 +24,7 @@
 }
 
 .rating {
+  font-size: 18px;
 }
 
 .recipeTagsWrapper {

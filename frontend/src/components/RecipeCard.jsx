@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
-import { CiHeart } from "react-icons/ci";
+// import { CiHeart } from "react-icons/ci";
 import "./styling/RecipeCard.css";
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 
 const RecipeCard = ({
   image,
@@ -11,8 +11,9 @@ const RecipeCard = ({
   rating,
   tags = [],
   onClick = () => {},
-  recipeId,
+  // recipeId,
 }) => {
+  /*
   const [liked, setLiked] = useState(false);
 
   useEffect(() => {
@@ -60,15 +61,16 @@ const RecipeCard = ({
       console.error("Error toggling like status:", error);
     }
   };
+  */
 
   return (
     <div className="recipeCard" onClick={onClick}>
       <img className="recipeImage" src={image} alt={title} />
-      <CiHeart
+      {/* <CiHeart
         className="likeIcon"
         style={{ color: liked ? "red" : "inherit", cursor: "pointer" }}
         onClick={toggleLike}
-      />
+      /> */}
       <div className="recipeContent">
         <h5 className="recipeTitle">{title}</h5>
         <hr className="recipeLine"></hr>
@@ -96,7 +98,7 @@ RecipeCard.propTypes = {
   rating: PropTypes.number.isRequired,
   tags: PropTypes.arrayOf(PropTypes.string).isRequired,
   onClick: PropTypes.func,
-  recipeId: PropTypes.string.isRequired,
+  // recipeId: PropTypes.string.isRequired,
 };
 
 RecipeCard.defaultProps = {
