@@ -1,0 +1,44 @@
+.recipeContainer {
+  margin: 80px 0;
+}
+
+.recipeList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+@media (min-width: 745px) {
+  .recipeContainer {
+    margin: 80px auto;
+    width: 630px;
+  }
+
+  .recipeList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .recipeContainer {
+    margin: 100px auto;
+    width: 912px;
+  }
+
+  .recipeList {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .recipeContainer {
+    width: 1221px;
+  }
+
+  .recipeList {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
